@@ -81,7 +81,7 @@ const tinyWorldInhabitants = [
 
    function formOutput(obj) {
 
-      const outputArr = Object.values(obj);
+      const outputArr = [obj.species, obj.name, obj.gender, obj.legs, obj.hands, obj.saying, obj.friends];
 
       for (let i = 0; i < outputArr.length; i++) {
          if (Array.isArray(outputArr[i])) {
