@@ -7,7 +7,7 @@ class Creature {
    this.friends = friends;
    this.propsArray = ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends']
   }
-  toString() {
+  output = () => {
     return this.propsArray
       .map((property) => Array.isArray(this[property]) ? this[property].join(", ") : this[property])
       .join('; ');
@@ -71,4 +71,4 @@ const anjela = new CatWoman("Anjela", ["definitely nobody except her own slaves,
 
 const tinyWorldInhabitants = [barbos, sonya, oleksii, victoria, anjela];
 
-tinyWorldInhabitants.forEach(item => print(item));
+tinyWorldInhabitants.forEach(item => print(item.output()));
