@@ -1,74 +1,74 @@
-const dog = {
-  species: "dog",
-  name: "Barbos",
-  gender: "male",
-  legs: 4,
-  hands: 0,
-  saying: "gav-gav kaje pes",
-  friends: ["definitely everybody in the world !"],
+
+class Creature {
+  constructor(name, gender, saying, friends) {
+   this.name = name;
+   this.gender = gender;
+   this.saying = saying;
+   this.friends = friends;
+   this.propsArray = ['species', 'name', 'gender', 'legs', 'hands', 'saying', 'friends']
+  }
+  toString() {
+    return this.propsArray
+      .map((property) => Array.isArray(this[property]) ? this[property].join(", ") : this[property])
+      .join('; ');
+  }
 };
 
-const cat = {
-  species: "cat",
-  name: "Sonya",
-  gender: "female",
-  legs: 4,
-  hands: 0,
-  saying: "meow-meow, skinbag...",
-  friends: ["definitely nobody except her own slaves"],
+class Animal extends Creature {
+  constructor(name, gender, saying, friends) {
+    super(name, gender, saying, friends);
+    this.legs = 4;
+    this.hands = 0;
+  }
 };
 
-const man = {
-  species: "human",
-  name: "Oleksii",
-  gender: "male",
-  legs: 2,
-  hands: 2,
-  saying: "Wanna be frontend ninja in future!",
-  friends: ["Alex", "Victoria", "every lovely kottan on the course"],
+class Human extends Creature {
+  constructor(name, gender, saying, friends) {
+    super(name, gender, saying, friends);
+    this.species = 'human'
+    this.legs = 2;
+    this.hands = 2;
+  }
 };
 
-const woman = {
-  species: "human",
-  name: "Victoria",
-  gender: "female",
-  legs: 2,
-  hands: 2,
-  saying: "When will you bring the money to home, honey?",
-  friends: ["Natasha", "Katya", "Lada"],
+class Dog extends Animal {
+  constructor(name, gender, saying, friends) {
+    super(name, gender, saying, friends);
+    this.species = 'dog';
+  }
 };
 
-const catWoman = {
-  species: "catWoman",
-  name: "Anjela",
-  gender: "female",
-  legs: 2,
-  hands: 2,
-  friends: [
-    "definitely nobody except her own slaves, she's a cat, you know...",
-  ],
+class Cat extends Animal {
+  constructor(name, gender, saying, friends) {
+    super(name, gender, saying, friends);
+    this.species = 'cat';
+  }
 };
 
-catWoman.__proto__ = cat;
+class Man extends Human {
+  constructor(name, saying, friends) {
+    super(name, 'male', saying, friends);
+  }
+};
 
-const tinyWorldInhabitants = [dog, cat, man, woman, catWoman];
+class Woman extends Human {
+  constructor(name, saying, friends) {
+    super(name, 'female', saying, friends);
+  }
+};
 
-const keys = [
-  "species",
-  "name",
-  "gender",
-  "legs",
-  "hands",
-  "saying",
-  "friends",
-];
+class CatWoman extends Human {
+  constructor(name, friends) {
+    super(name, 'female', sonya.saying, friends);
+  }
+};
 
-tinyWorldInhabitants.forEach((person) => {
-  print(
-    keys
-      .map((key) =>
-        Array.isArray(person[key]) ? person[key].join(", ") : person[key]
-      )
-      .join(" ; ")
-  );
-});
+const barbos = new Dog("Barbos", "male", "gav-gav kaje pes", ["definitely everybody in the world !"] );
+const sonya = new Cat("Sonya", "female", "meow-meow, skinbag...", ["definitely nobody except her own slaves"]);
+const oleksii = new Man("Oleksii", "Wanna be frontend ninja in future!", ["Alex", "Victoria", "every lovely kottan on the course"]);
+const victoria = new Woman("Victoria", "When will you bring the money to home, honey?",  ["Natasha", "Katya", "Lada"]);
+const anjela = new CatWoman("Anjela", ["definitely nobody except her own slaves, she's a cat, you know..."]);
+
+const tinyWorldInhabitants = [barbos, sonya, oleksii, victoria, anjela];
+
+tinyWorldInhabitants.forEach(item => print(item));
