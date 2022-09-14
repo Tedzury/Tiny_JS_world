@@ -14,7 +14,14 @@ class Creature {
     ];
   }
   output = () => {
-    return this.propsArray
+
+    this.propsArray.length === 6? 
+    this.prettyOutput = ['name', 'species', 'gender', 'legs', 'saying', 'friends'] :
+    this.propsArray.length === 7?
+    this.prettyOutput = ['name', 'species', 'gender', 'legs', 'hands', 'saying', 'friends'] :
+    this.prettyOutput = this.propsArray;
+
+    return this.prettyOutput
       .map((property) =>
         Array.isArray(this[property])
           ? this[property].join(", ")
