@@ -5,29 +5,14 @@ class Creature {
     this.gender = gender;
     this.saying = saying;
     this.friends = friends;
-    this.propsArray = [
-      "species",
-      "name",
-      "gender",
-      "saying",
-      "friends",
-    ];
   }
-  output = () => {
 
-    this.propsArray.length === 6? 
-    this.prettyOutput = ['name', 'species', 'gender', 'legs', 'saying', 'friends'] :
-    this.propsArray.length === 7?
-    this.prettyOutput = ['name', 'species', 'gender', 'legs', 'hands', 'saying', 'friends'] :
-    this.prettyOutput = this.propsArray;
+  friendsToString() {
+    return this.friends.join(", ")
+  }
 
-    return this.prettyOutput
-      .map((property) =>
-        Array.isArray(this[property])
-          ? this[property].join(", ")
-          : this[property]
-      )
-      .join("; ");
+  output() {
+    return `${this.name}; ${this.species}; ${this.gender}; ${this.saying}; ${this.friendsToString()}`
   };
 }
 
@@ -35,8 +20,8 @@ class Mammal extends Creature {
   constructor(species, name, gender, saying, friends, legs) {
     super(species, name, gender, saying, friends);
     this.legs = legs;
-    this.propsArray = [...this.propsArray, 'legs']
   }
+  output() {return `${super.output()}; ${this.legs}`} 
 }
 
 class Animal extends Mammal {
@@ -49,8 +34,8 @@ class Human extends Mammal {
   constructor(name, gender, saying, friends) {
     super('human', name, gender, saying, friends, 2);
     this.hands = 2;
-    this.propsArray = [...this.propsArray, "hands"];  
   }
+  output() {return `${super.output()}; ${this.hands}`}
 }
 
 class Dog extends Animal {
@@ -103,6 +88,7 @@ const anjela = new CatWoman("Anjela", [
   "definitely nobody except her own slaves, she's a cat, you know...",
 ]);
 
+
 const tinyWorldInhabitants = [barbos, sonya, oleksii, victoria, anjela];
 
-tinyWorldInhabitants.forEach((item) => print(item.output()));
+tinyWorldInhabitants.forEach((inhabitant) => print(inhabitant.output()));
