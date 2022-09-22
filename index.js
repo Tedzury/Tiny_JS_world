@@ -8,12 +8,14 @@ class Creature {
   }
 
   friendsToString() {
-    return this.friends.join(", ")
+    return this.friends.join(", ");
   }
 
   output() {
-    return `${this.name}; ${this.species}; ${this.gender}; ${this.saying}; ${this.friendsToString()}`
-  };
+    return `${this.name}; ${this.species}; ${this.gender}; ${
+      this.saying
+    }; ${this.friendsToString()}`;
+  }
 }
 
 class Mammal extends Creature {
@@ -21,7 +23,9 @@ class Mammal extends Creature {
     super(species, name, gender, saying, friends);
     this.legs = legs;
   }
-  output() {return `${super.output()}; ${this.legs}`} 
+  output() {
+    return `${super.output()}; ${this.legs}`;
+  }
 }
 
 class Animal extends Mammal {
@@ -32,21 +36,23 @@ class Animal extends Mammal {
 
 class Human extends Mammal {
   constructor(name, gender, saying, friends) {
-    super('human', name, gender, saying, friends, 2);
+    super("human", name, gender, saying, friends, 2);
     this.hands = 2;
   }
-  output() {return `${super.output()}; ${this.hands}`}
+  output() {
+    return `${super.output()}; ${this.hands}`;
+  }
 }
 
 class Dog extends Animal {
   constructor(name, gender, saying, friends) {
-    super('dog', name, gender, saying, friends);
+    super("dog", name, gender, saying, friends);
   }
 }
 
 class Cat extends Animal {
   constructor(name, gender, saying, friends) {
-    super('cat', name, gender, saying, friends);
+    super("cat", name, gender, saying, friends);
   }
 }
 
@@ -87,7 +93,6 @@ const victoria = new Woman(
 const anjela = new CatWoman("Anjela", [
   "definitely nobody except her own slaves, she's a cat, you know...",
 ]);
-
 
 const tinyWorldInhabitants = [barbos, sonya, oleksii, victoria, anjela];
 
