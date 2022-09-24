@@ -12,8 +12,11 @@ class Creature {
   }
 
   output() {
-    return `${this.name}; ${this.species}; ${this.gender}; ${
-      this.saying
+
+    const {name, species, gender, saying} = this;
+
+    return `${name}; ${species}; ${gender}; ${
+      saying
     }; ${this.friendsToString()}`;
   }
 }
